@@ -24,7 +24,7 @@ I've included two versions of the snippet, a full version and the minified versi
 
 <h3> Describe and test </h2>
 These are not underscore functions, I made them up.
-<img src="https://github.com/alexcstark/assessment-snippets/blob/master/Untitled%20picture.png" width=50%>
+<img src="https://github.com/alexcstark/assessment-snippets/blob/master/Untitled%20picture.png" width=75%>
 
 Pull requests welcome! 
 
