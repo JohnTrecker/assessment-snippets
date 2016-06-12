@@ -1,0 +1,72 @@
+'.source.js':
+  'HR Assessment Helpers':
+    'prefix': 'taser'
+    'body': '''
+    var _ = {};
+    _.each = function(collection, iterator) {
+      if (Array.isArray(collection)) {
+        for (var i = 0; i < collection.length; i++) {
+          iterator(collection[i], i, collection);
+        }
+      } else if (typeof collection === 'object') {
+        for (var key in collection) {
+          iterator(collection[key], key, collection);
+        }
+      }
+    };
+
+    _.reduce = function(collection, iterator, accumulator) {
+      var initialize = accumulator === undefined;
+
+      _.each(collection, function(val, i) {
+        if (initialize) {
+          accumulator = val;
+          initialize = false;
+        } else {
+          accumulator = iterator(accumulator, val, i);
+        }
+      });
+
+      return accumulator;
+    };
+
+    _.isEqual = function(a, b) {
+      if (typeof a !== typeof b) {
+        return false;
+      }
+      if (typeof a !== 'object') {
+        return a === b;
+      }
+      if (a.length !== b.length) {
+        return false;
+      }
+      return _.reduce(a, function(equality, val, i) {
+        if (typeof val === 'object') {
+          return equality && _.isEqual(a[i], b[i]);
+        }
+        return equality && a[i] === b[i];
+      }, true);
+
+    };
+
+    _.describe = function(name, description) {
+      console.log('==============================');
+      console.log(name);
+      console.log(description);
+    };
+
+    _.test = function(actual, description, expected) {
+      if (_.isEqual(actual, expected)) {
+        console.log('PASS: ', actual);
+      } else {
+        console.log('FAIL: actual: ', actual, ' || expected: ', expected);
+      }
+    };
+    '''
+
+'.source.js':
+  'HR Assessment Helpers':
+    'prefix': 'mintaser'
+    'body': '''
+    var _={};_.each=function(e,o){if(Array.isArray(e))for(var n=0;n<e.length;n++)o(e[n],n,e);else if("object"==typeof e)for(var t in e)o(e[t],t,e)},_.reduce=function(e,o,n){var t=void 0===n;return _.each(e,function(e,c){t?(n=e,t=!1):n=o(n,e,c)}),n},_.isEqual=function(e,o){return typeof e!=typeof o?!1:"object"!=typeof e?e===o:e.length!==o.length?!1:_.reduce(e,function(n,t,c){return"object"==typeof t?n&&_.isEqual(e[c],o[c]):n&&e[c]===o[c]},!0)},_.describe=function(e,o){console.log("=============================="),console.log(e),console.log(o)},_.test=function(e,o,n){_.isEqual(e,n)?console.log("PASS: ",e):console.log("FAIL: actual: ",e," || expected: ",n)};
+    '''
