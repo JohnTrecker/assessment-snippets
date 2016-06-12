@@ -1,3 +1,5 @@
+The goal of this project is to quickly add _.each, _.reduce, and some testing functionality for your assessments. 
+
 <h2>Instructions</h2>
 
 1. Decide how you want to use the snippets/code. 
